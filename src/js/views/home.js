@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 
-export const Home = () => (
-	<div className="text-center mt-5">
-		<h1>Hello Rigo!</h1>
-		<p>
-			<img src={rigoImage} />
-		</p>
-		<a href="#" className="btn btn-success">
-			If you see this green button, bootstrap is working
-		</a>
-	</div>
-);
+export const Home = () => {
+	const { store, actions } = useContext(Context)
+
+	return (
+		<div className="text-center mt-5">
+			<h1>Hello Rigo!</h1>
+			<p>
+				<img src={rigoImage} />
+			</p>
+			<a href="#" className="btn btn-success">
+				If you see this green button, bootstrap is working
+			</a>
+			<h1>La persona se llama {store.persona.nombre}</h1>
+			<button onClick={() => { actions.setPersona() }}>Cambiar Persona</button>
+		</div>
+	)
+};

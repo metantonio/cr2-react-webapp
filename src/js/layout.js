@@ -24,8 +24,8 @@ const Layout = () => {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/demo" element={<Demo />} />
-						<Route path="/single/:theid" element={<Single />} />
-						<Route path="*" element={<h1>Not found!</h1>} />
+						<Route path="/single/:indiceVariable" element={<Single />} /> {/* Paso 1: configurar variable "indiceVariable" como elemento dinámico */}
+						<Route path="*" element={<h1>Not found! 404 error</h1>} />
 					</Routes>
 					<Footer />
 				</ScrollToTop>

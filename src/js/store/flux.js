@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
-		store: {
+		store: {//aquí almacenamos todos los estados gloables
+			//demo es un estado global
 			demo: [
 				{
 					title: "FIRST",
@@ -11,8 +12,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					title: "SECOND",
 					background: "white",
 					initial: "white"
+				},
+				{
+					title: "THIRD",
+					background: "white",
+					initial: "white"
 				}
-			]
+			],
+			persona: { nombre: "Adrinana" }
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -36,7 +43,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 
 				//reset the global store
-				setStore({ demo: demo });
+				//setStore({ demo: demo });
+
+				//lo correcto es:
+				setStore({ ...store, demo: demo })
+			},
+			setPersona: () => {
+				let store = getStore() //obtenemos los estados contenidos en store
+				let actions = getActions()
+				let alexis = actions.loadSomeData()
+				let antonio = { nombre: "Antonio", edad: 34 }
+				setStore({ ...store, persona: antonio }) //spread, mantener los elementos viejos y cambiar el que nos interesa.				
 			}
 		}
 	};
