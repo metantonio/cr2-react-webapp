@@ -19,7 +19,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			persona: { nombre: "Adrinana" }
+			persona: { nombre: "Adrinana" },
+			favorites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -54,6 +55,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let alexis = actions.loadSomeData()
 				let antonio = { nombre: "Antonio", edad: 34 }
 				setStore({ ...store, persona: antonio }) //spread, mantener los elementos viejos y cambiar el que nos interesa.				
+			},
+			setFavorites: () => {
+				let store = getStore() //obtenemos los estados contenidos en store
+				let actions = getActions()
+				//let antonio = { nombre: "Antonio", edad: 34 }
+				//setStore({ ...store, persona: antonio }) //spread, mantener los elementos viejos y cambiar el que nos interesa.				
+			},
+			fetchGenerico: async (path, metodo = "GET", data = null) => {
+				const BASE_URL = process.env.BASE_URL
+				let url = BASE_URL + path
+
+				let obj = {
+					method: metodo,
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(data)
+				}
+
+				if (metodo == "GET") {
+					obj = {
+						method: metodo,
+						headers: {
+							"Content-Type": "application/json"
+						}
+					}
+				}
+
+				let response = await fetch(url, obj)
+
+				//response.ok == True significa que la respuesta tiene status 200-299
+				if (response.ok) {
+					let responseObj = await response.json() //transformación de la promesa en json a objeto en javascript
+					return responseObj
+
+				} else {
+					let responseObj = await response.json()
+					alert("Hubo un error en la petición: " + response.statusText)
+					return responseObj
+				}
 			}
 		}
 	};
