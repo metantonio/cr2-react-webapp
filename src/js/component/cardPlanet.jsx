@@ -2,26 +2,23 @@ import React from "react";
 import Image from "../../img/imagenstar.png";
 import { Link } from "react-router-dom";
 
-
-const CardPeople = (props) => {
+const CardPlanet = (props) => {
     let partes = props.id.split("/"); //devuelve un arreglo => [https, swapi.dev, api , 1, ""]
     let id = partes[partes.length - 2]; //nos quedamos con el 1
 
     return (
-
-        <div className="container card main" style={{ width: "18rem" }}>
+        <div className="card main" style={{ width: "18rem" }}>
             <img src={props.image || Image} className="card-img-top laim" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
-                <p className="card-text">Gender:{props.gender}</p>
-                <p className="card-text">Hair Color:{props.hair_color}</p>
-                <p className="card-text">Eye color:{props.eye_color}</p>
+                <p className="card-text"> Terrain:{props.terrain}</p>
                 <Link to={"/people/" + id}><button className=" link btn btn-primary">Learn More!</button></Link>
-                <a href="#" className="btn btn-warning like"><i class="far fa-heart cora"></i> </a>
+                <a href="#" className="btn btn-warning like like"><i class="far fa-heart cora"></i></a>
+
             </div>
         </div>
     )
 
 }
 
-export default CardPeople;
+export default CardPlanet;
