@@ -1,44 +1,33 @@
-import React from "react";
-import Images from "../../img/imagendestarwars.png";
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import { Context } from '../store/appContext';
+import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<div className="container">
+		<nav className="navbar navbar-light bg-dark border-bottom border-warning mb-3">
+			<div className='d-flex'>
 				<Link to="/">
-					<img src={Images} className=" star" alt="..." />
+					<span className="navbar-brand mb-0 w-0"><img className="img-fluid w-25 mt-4 ms-2 " src="https://logodownload.org/wp-content/uploads/2015/12/star-wars-logo.png" /></span>
 				</Link>
-				<div className="ml-auto">
-					<div className="dropdown">
-						<button
-							className="btn btn-primary dropdown-toggle"
-							type="button"
-							data-bs-toggle="dropdown"
-							aria-expanded="false"
-						>
-							Favorites 0
-						</button>
-						<ul className="dropdown-menu">
-							<li>
-								<a className="dropdown-item" href="#">
-									Action
+				<div className="dropdown ml-auto">
+					<button className="btn btn-warning dropdown-toggle m-4" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+						Favorites
+					</button>
+					<ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+						{store.favoriteItems.map((value, index) => {
+							return <li className='list-item'
+								key={index}>
+								<a className='dropdown-item' href="#">{value}
+									<button onClick={() => { actions.deleteFavoriteItems(index) }}><i className="fas fa-trash"></i></button>
 								</a>
 							</li>
-							<li>
-								<a className="dropdown-item" href="#">
-									Another action
-								</a>
-							</li>
-							<li>
-								<a className="dropdown-item" href="#">
-									Something else here
-								</a>
-							</li>
-						</ul>
-					</div>
+						})}
+					</ul>
 				</div>
 			</div>
+
+
 		</nav>
 	);
 };

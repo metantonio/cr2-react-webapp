@@ -1,0 +1,40 @@
+.cara{
+    margin-top: 40px;
+    text-align: start;
+    margin-left: 15px;
+    font-size: 50px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+.main-container{
+    max-height: 700px;
+    display: flex;
+    overflow-x:scroll;
+}
+
+
+.main-container .card{
+    min-width: 250px;
+    line-height: 20px;
+    text-align: center;
+    background-color: aliceblue;
+    margin-right: 5px;
+}
+
+.buttons-group{
+    display: flex;
+    justify-content: center;
+}
+
+button{
+    margin-right: 5px;
+}
+
+
+
+
+.card-body{
+    min-height: 200px;
+}
+

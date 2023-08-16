@@ -2,18 +2,24 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "../../styles/MoreInfo.css"
 
 export const Single = props => {
 	const { store, actions } = useContext(Context);
-	const params = useParams(); //es un hook que nos ayuda a leer la información de la url
-	/* Paso 3: traernos la variable dinámica deinida en el layout.js, :indiceVariable */
-	//usando params.indiceVariable
-	//Como en el Paso 2, habíamos hecho la navegación con Link to, usando el índice del arreglo,
-	//params.indiceVariable tiene relacionado el índide del mismo arreglo
+	const params = useParams();
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.indiceVariable].title}</h1>
 
+			<h1>{store.charactersStarWars.length != 0 ? store.charactersStarWars[params.theid].name : 'Loading'}</h1>
+			<div className="Extra-info">
+				<h3>{store.charactersStarWars.length != 0 ? "Height:" + " " + store.charactersStarWars[params.theid].height : 'Loading'}</h3>
+				<h3>{store.charactersStarWars.length != 0 ? "Mass:" + " " + store.charactersStarWars[params.theid].mass : 'Loading'}</h3>
+				<h3>{store.charactersStarWars.length != 0 ? "Hair Color:" + " " + store.charactersStarWars[params.theid].hair_color : 'Loading'}</h3>
+				<h3>{store.charactersStarWars.length != 0 ? "Skin Color:" + " " + store.charactersStarWars[params.theid].skin_color : 'Loading'}</h3>
+				<h3>{store.charactersStarWars.length != 0 ? "Eye Color:" + " " + store.charactersStarWars[params.theid].eye_color : 'Loading'}</h3>
+				<h3>{store.charactersStarWars.length != 0 ? "Birth Year:" + " " + store.charactersStarWars[params.theid].birth_year : 'Loading'}</h3>
+				<h3>{store.charactersStarWars.length != 0 ? "Gender:" + " " + store.charactersStarWars[params.theid].gender : 'Loading'}</h3>
+			</div>
 			<hr className="my-4" />
 
 			<Link to="/">
