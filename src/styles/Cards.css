@@ -1,18 +1,13 @@
-.cara{
-    margin-top: 40px;
-    text-align: start;
-    margin-left: 15px;
-    font-size: 50px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-
 .main-container{
     max-height: 700px;
     display: flex;
     overflow-x:scroll;
 }
-
+.cara{
+    margin-top: 25px;
+    margin-left: 15px;
+    text-align: start;
+}
 
 .main-container .card{
     min-width: 250px;
@@ -32,7 +27,9 @@ button{
 }
 
 
-
+.card img{
+    min-height: 350px;
+}
 
 .card-body{
     min-height: 200px;
