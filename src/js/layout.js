@@ -10,6 +10,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import SinglePeople from "./views/singlePeople.jsx";
+import Login from "./views/login.jsx";
 
 //create your first component
 const Layout = () => {
@@ -25,6 +26,7 @@ const Layout = () => {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/demo" element={<Demo />} />
+						<Route path="/login" element={<Login />} />
 						<Route path="/single/:indiceVariable" element={<Single />} /> {/* Paso 1: configurar variable "indiceVariable" como elemento dinámico */}
 						<Route path="*" element={<h1>Not found! 404 error</h1>} />
 						<Route path="/people/:id" element={<SinglePeople />} />

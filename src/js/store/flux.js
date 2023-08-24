@@ -69,7 +69,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let obj = {
 					method: metodo,
 					headers: {
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + localStorage.getItem("token")
 					},
 					body: JSON.stringify(data)
 				}
@@ -78,7 +79,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					obj = {
 						method: metodo,
 						headers: {
-							"Content-Type": "application/json"
+							"Content-Type": "application/json",
+							"Authorization": "Bearer " + localStorage.getItem("token")
 						}
 					}
 				}
@@ -95,6 +97,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					alert("Hubo un error en la petición: " + response.statusText)
 					return responseObj
 				}
+			},
+			fetchPromise: async (path, metodo = "GET", data = null) => {
+				const BASE_URL = process.env.BASE_URL
+				let url = BASE_URL + path
+
+				let obj = {
+					method: metodo,
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": "Bearer " + localStorage.getItem("token")
+					},
+					body: JSON.stringify(data)
+				}
+
+				if (metodo == "GET") {
+					obj = {
+						method: metodo,
+						headers: {
+							"Content-Type": "application/json",
+							"Authorization": "Bearer " + localStorage.getItem("token")
+						}
+					}
+				}
+
+				let response = await fetch(url, obj)
+				return response
+
 			}
 		}
 	};
